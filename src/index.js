@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom'
 import './style/main.css'
 import { StyleSheet, css } from 'aphrodite/no-important'
 
-import InputsStudy from './components/input-study'
-
-console.log(InputsStudy)
+import InputsText from './components/input-text'
+import InputsEmail from './components/input-email'
 
 let root = document.createElement('div')
 root.setAttribute('id', 'root')
@@ -18,7 +17,7 @@ const HolaComponent = () => (
       type="text"</p ></div >
     <div
       className={css([styles['item-inputText'], styles.inputFlexboxContainer])} >
-      {InputsStudy.map((MyInput, index, arr) => {
+      {InputsText.map((MyInput, index, arr) => {
         return (
           <div key={index}
             className={++index !== arr.length
@@ -32,10 +31,18 @@ const HolaComponent = () => (
     <div className={css([styles.itemSeparator, styles.backGrey])} />
 
     <div className={css(styles['item-inputEmail-text'])} ><p >Input
-      type="text"</p ></div >
+      type="email"</p ></div >
     <div
       className={css([styles['item-inputEmail'], styles.inputFlexboxContainer])} >
-      <h1 >Eyyyy</h1 >
+      {InputsEmail.map((MyInput, index, arr) => {
+        return (
+          <div key={index}
+            className={++index !== arr.length
+             ? css(styles.espacioTop)
+             : css([styles.espacioTop, styles.espacioDown])} >
+            <MyInput />
+          </div >)
+      })}
     </div >
 
     <footer className={css([styles['item-d'], styles.backGrey])} />
@@ -67,7 +74,7 @@ const styles = StyleSheet.create({
     'margin': 'auto'
   },
   'item-inputText-text': {
-    'grid-area': 'text'
+    'grid-area': 'item-inputText-text'
   },
   'item-inputEmail': {
     'grid-area': 'item-inputEmail',
@@ -75,7 +82,7 @@ const styles = StyleSheet.create({
     'margin': 'auto'
   },
   'item-inputEmail-text': {
-    'grid-area': 'text'
+    'grid-area': 'item-inputEmail-text'
   },
 
   'item-d': {
@@ -104,7 +111,6 @@ const styles = StyleSheet.create({
 
   container: {
     display: 'grid',
-    // 'grid-template-columns': '200px 200px 200px 200px',
     'grid-template-columns': '10% 90%',
     'grid-template-rows': '100px auto 15px auto 100px',
     'grid-template-areas': `"header header"
