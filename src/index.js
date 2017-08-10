@@ -14,11 +14,13 @@ document.body.appendChild(root)
 const HolaComponent = () => (
   <div id='grid-container' className={css(styles.container)} >
     <header className={css([styles['item-a'], styles.backGrey])} />
-    <div className={css(styles['item-c'])} ><p >Input type="text"</p ></div >
-    <div className={css([styles['item-b'], styles.inputFlexboxContainer])} >
+    <div className={css(styles['item-inputText-text'])} ><p >Input
+      type="text"</p ></div >
+    <div
+      className={css([styles['item-inputText'], styles.inputFlexboxContainer])} >
       {InputsStudy.map((MyInput, index, arr) => {
         return (
-          <div
+          <div key={index}
             className={++index !== arr.length
               ? css(styles.espacioTop)
               : css([styles.espacioTop, styles.espacioDown])} >
@@ -26,6 +28,16 @@ const HolaComponent = () => (
           </div >)
       })}
     </div >
+
+    <div className={css([styles.itemSeparator, styles.backGrey])} />
+
+    <div className={css(styles['item-inputEmail-text'])} ><p >Input
+      type="text"</p ></div >
+    <div
+      className={css([styles['item-inputEmail'], styles.inputFlexboxContainer])} >
+      <h1 >Eyyyy</h1 >
+    </div >
+
     <footer className={css([styles['item-d'], styles.backGrey])} />
   </div >
 )
@@ -49,17 +61,29 @@ const styles = StyleSheet.create({
   'item-a': {
     'grid-area': 'header'
   },
-  'item-b': {
-    'grid-area': 'main',
+  'item-inputText': {
+    'grid-area': 'item-inputText',
     'justify-self': 'center',
     'margin': 'auto'
   },
-  'item-c': {
+  'item-inputText-text': {
+    'grid-area': 'text'
+  },
+  'item-inputEmail': {
+    'grid-area': 'item-inputEmail',
+    'justify-self': 'center',
+    'margin': 'auto'
+  },
+  'item-inputEmail-text': {
     'grid-area': 'text'
   },
 
   'item-d': {
     'grid-area': 'footer'
+  },
+
+  itemSeparator: {
+    'grid-area': 'separator'
   },
 
   espacioTop: {
@@ -82,9 +106,11 @@ const styles = StyleSheet.create({
     display: 'grid',
     // 'grid-template-columns': '200px 200px 200px 200px',
     'grid-template-columns': '10% 90%',
-    'grid-template-rows': '100px auto 100px',
+    'grid-template-rows': '100px auto 15px auto 100px',
     'grid-template-areas': `"header header"
-                           "text main"
+                           "item-inputText-text item-inputText"
+                           "separator separator"
+                           "item-inputEmail-text item-inputEmail"
                            "footer footer"`
   }
 })
