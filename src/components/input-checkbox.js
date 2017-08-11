@@ -97,7 +97,14 @@ const CheckBoxOneStyle = StyleSheet.create({
 })
 
 const Label = () => (
-  <label className={css(labelStyle.label)} />
+  <section >
+    <h3 >Igual que el anterior pero se puede pinchar en toda la barra</h3 >
+    <input type='checkbox' value={1} id='checkboxOneInput2'
+      className={css(labelStyle.checkbox)} />
+    <label htmlFor='checkboxOneInput2' className={css(labelStyle.label)} >
+      <div className={css(labelStyle.div)} />
+    </label >
+  </section >
 )
 
 const labelStyle = StyleSheet.create({
@@ -108,8 +115,37 @@ const labelStyle = StyleSheet.create({
     background: '#555',
     margin: '20px 80px',
     position: 'relative',
-    'border-radius': '3px'
+    'border-radius': '3px',
+    cursor: 'pointer'
+  },
+  div: {
+    display: 'block',
+    width: '16px',
+    height: '16px',
+    'border-radius': '50%',
+    transition: 'all .5s ease',
+    position: 'relative',
+    top: '-3px',
+    left: '-3px',
+    background: '#ccc'
+  },
+  checkbox: {
+    visibility: 'hidden',
+    ':checked ~ label>div': {
+      left: '27px',
+      background: '#71cc3f'
+    }
   }
 })
+
+/*
+  Referencias para continuar:
+  https://codepen.io/bbodine1/pen/novBm
+  https://paulund.co.uk/style-checkboxes-with-css
+  http://www.inserthtml.com/2012/06/custom-form-radio-checkbox/
+  http://www.csscheckbox.com/
+  http://www.csscheckbox.com/
+  https://codepen.io/bdan/pen/jAkZZK
+ */
 
 export default [CheckBoxHack, CheckBoxOne, Label]

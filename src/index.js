@@ -4,7 +4,7 @@ import './style/main.css'
 import { StyleSheet, css } from 'aphrodite/no-important'
 
 import InputsText from './components/input-text'
-import InputsEmail from './components/input-email'
+import InputsCheckbox from './components/input-checkbox'
 
 let root = document.createElement('div')
 root.setAttribute('id', 'root')
@@ -31,10 +31,10 @@ const HolaComponent = () => (
     <div className={css([styles.itemSeparator, styles.backGrey])} />
 
     <div className={css(styles['item-inputEmail-text'])} ><p >Input
-      type="email"</p ></div >
+      type="checkbox"</p ></div >
     <div
       className={css([styles['item-inputEmail'], styles.inputFlexboxContainer])} >
-      {InputsEmail.map((MyInput, index, arr) => {
+      {InputsCheckbox.map((MyInput, index, arr) => {
         return (
           <div key={index}
             className={++index !== arr.length
